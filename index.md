@@ -1,8 +1,12 @@
 ---
-title: Home
+title: Remote In Tech
 layout: default
+nav_order: 1
+description: "Remote In Tech is list of semi to fully remote-friendly companies in or around tech. It's not a job site but a list of companies that might hire."
+permalink: /
 has_children: true
 ---
+
 # Remote-friendly companies
 
 A list of semi to fully remote-friendly companies in or around tech.
