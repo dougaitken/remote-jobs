@@ -14,6 +14,11 @@ Contributions are very welcome! Please [review our contributing guidelines](http
 
 The list is very long very long now so you can scroll the list under the company profiles in the sidebar or here. 
 
+Remote in tech is a platform that showcases companies that hire remote employees. Our goal is to help job seekers find remote work opportunities and connect with companies that offer remote work options.
+
+We understand that finding remote work can be challenging, which is why we’ve compiled a list of companies that hire remote employees. Our list includes almost 800 companies from various industries, including technology, finance, healthcare, and more - all with a focus on technology role. We strice to ensure that each company on our list has been carefully vetted to ensure that they offer legitimate remote work opportunities.
+
+We are not a standard job board. Instead, we focus on providing information about companies that offer remote work options. Our website is designed to be user-friendly and easy to navigate. You can browse our list of companies by industry or search for specific companies using our search bar.
 
 ## Companies
 
