@@ -4,7 +4,6 @@ layout: default
 nav_order: 1
 description: "Remote In Tech is list of semi to fully remote-friendly companies in or around tech. It's not a job site but a list of companies that might hire."
 permalink: /
-has_children: true
 ---
 
 # Remote-friendly companies
@@ -12,6 +11,8 @@ has_children: true
 A list of semi to fully remote-friendly companies in or around tech.
 
 Contributions are very welcome! Please [review our contributing guidelines](https://github.com/remoteintech/remote-jobs/tree/main/.github/CONTRIBUTING.md) and then submit a new entry or update.
+
+The list is very long very long now so you can scroll the list under the company profiles in the sidebar or here. 
 
 
 ## Companies
