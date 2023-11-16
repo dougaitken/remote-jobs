@@ -8,9 +8,11 @@ parent: Company Profiles
 
 ## Company blurb
 
-We are the people behind WordPress.com, WooCommerce, Jetpack, WordPress VIP, Simplenote, Longreads, WPScan, Akismet, Gravatar, Crowdsignal, Cloudup, Tumblr, Day One, Pocket Casts, and more. We believe in making the web a better place.
+We are the people behind WordPress.com, Woo, Jetpack, WordPress VIP, Simplenote, Longreads, The Atavist, WPScan, Akismet, Gravatar, Crowdsignal, Cloudup, Tumblr, Day One, Pocket Casts, Newspack, Texts, and more. We believe in making the web a better place.
 
-[We’re a distributed company](https://distributed.blog/) with 2,044 Automatticians in 98 countries speaking 122 different languages. We’re committed to [diversity, equity, and inclusion](https://automattic.com/diversity-and-inclusion/), and our common goal is to democratize publishing and commerce so that anyone with a story can tell it, and anyone with a product can sell it, regardless of income, gender, politics, language, or where they live in the world.
+[We’re a distributed company](https://distributed.blog/) spread across many countries speaking many different languages. 
+
+We’re committed to [diversity, equity, and inclusion](https://automattic.com/diversity-and-inclusion/), and our common goal is to democratize publishing and commerce so that anyone with a story can tell it, and anyone with a product can sell it, regardless of income, gender, politics, language, or where they live in the world.
 
 [We believe in Open Source](https://github.com/Automattic) and the vast majority of our work is available under the GPL.
 
@@ -20,7 +22,7 @@ Automattic is a [Most Loved Company](https://mostlovedworkplace.com/companies/au
 
 ## Company size
 
-[We’re a distributed company](https://distributed.blog/) with 2,044 Automatticians in 98 countries speaking 122 different languages. 
+See real time data at [Automattic.com/about](https://automattic.com/about/); we're about 1900 as of Nov '23.
 
 ## Remote status
 
@@ -34,7 +36,7 @@ Worldwide - our team members hail from all over, every continent except Antarcti
 
 ## Company technologies
 
-WordPress, JavaScript (Node/React/Redux), PHP, Spark, Kafka, Elasticsearch, Impala/Hive, MySQL, Java, Python, [and more](https://github.com/automattic)
+WordPress, JavaScript (Node/React/Redux), PHP, Spark, Kafka, Elasticsearch, Impala/Hive, MySQL, Java, Python, [and more](https://github.com/automattic).
 
 ## Office locations
 
@@ -42,4 +44,4 @@ We have no official physical office but have a few spaces the team occassionally
 
 ## How to apply
 
-Come [work with us](https://automattic.com/work-with-us/).
+Read about [working with us](https://automattic.com/work-with-us/); including benefits, how we work, the hiring process!
