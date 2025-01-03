@@ -1,0 +1,63 @@
+name: Check URLs in Markdown
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'  # Trigger only for markdown files
+
+jobs:
+  url-checker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Check URLs
+        id: check-urls
+        run: |
+          import re
+          import requests
+          from pathlib import Path
+
+          markdown_files = Path('.').rglob('*.md')
+          url_pattern = re.compile(r'\[.*?\]\((http[s]?://.*?)\)')
+
+          invalid_urls = []
+          for file_path in markdown_files:
+              with open(file_path, 'r') as file:
+                  content = file.read()
+                  urls = url_pattern.findall(content)
+                  for url in urls:
+                      try:
+                          response = requests.head(url, allow_redirects=True, timeout=5)
+                          if response.status_code != 200:
+                              invalid_urls.append(f"{url} (status: {response.status_code})")
+                      except requests.RequestException as e:
+                          invalid_urls.append(f"{url} (error: {str(e)})")
+
+          if invalid_urls:
+              invalid_urls_str = '\n'.join(f"- {url}" for url in invalid_urls)
+              print(f"::set-output name=invalid_urls::{invalid_urls_str}")
+          else:
+              print("::set-output name=invalid_urls::")
+
+      - name: Comment on Pull Request
+        if: steps.check-urls.outputs.invalid_urls != ''
+        uses: actions-ecosystem/action-create-comment@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            Hey @dougaitken - The following URLs files returned non-200 status codes:
+
+            ${{ steps.check-urls.outputs.invalid_urls }}
