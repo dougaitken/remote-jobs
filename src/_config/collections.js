@@ -33,7 +33,7 @@ export const getRecentCompanies = collection => {
   const companies = collection.getFilteredByGlob('./src/companies/**/*.md');
   return companies
     .filter(c => c.data.addedAt)
-    .sort((a, b) => new Date(b.data.addedAt) - new Date(a.data.addedAt))
+    .sort((a, b) => b.data.addedAt - a.data.addedAt)
     .slice(0, 12);
 };
 
