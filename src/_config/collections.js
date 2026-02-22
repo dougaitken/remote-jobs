@@ -28,32 +28,13 @@ export const getFeaturedCompanies = collection => {
   return shuffleArray(matched).slice(0, 8);
 };
 
-/** Recently added companies (by addedAt date from git data or frontmatter) */
+/** Recently added companies (by addedAt date from frontmatter) */
 export const getRecentCompanies = collection => {
   const companies = collection.getFilteredByGlob('./src/companies/**/*.md');
-
-  // Get git dates from global data (computed data isn't available during collection building)
-  // Access via the first available item that has the global data loaded
-  let gitDates = {};
-  for (const item of collection.items) {
-    if (item.data?.companyGitDates) {
-      gitDates = item.data.companyGitDates;
-      break;
-    }
-  }
-
-  // Build array with dates for sorting
-  const companiesWithDates = companies.map(c => {
-    const slug = c.data.slug || c.fileSlug;
-    const addedAt = c.data.addedAt || gitDates[slug]?.addedAt || null;
-    return { company: c, addedAt };
-  });
-
-  return companiesWithDates
-    .filter(item => item.addedAt)
-    .sort((a, b) => new Date(b.addedAt) - new Date(a.addedAt))
-    .slice(0, 12)
-    .map(item => item.company);
+  return companies
+    .filter(c => c.data.addedAt)
+    .sort((a, b) => new Date(b.data.addedAt) - new Date(a.data.addedAt))
+    .slice(0, 12);
 };
 
 /** Companies grouped by region */
