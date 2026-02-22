@@ -88,7 +88,7 @@ Access these in templates:
 
 - `collections.companies` - All companies (alphabetically sorted)
 - `collections.featuredCompanies` - Randomly shuffled subset (8 of 12) from curated list
-- `collections.recentCompanies` - Recently added (by addedAt date, shuffled)
+- `collections.recentCompanies` - Recently added (by addedAt date)
 - `collections.companiesByRegion` - Grouped by region
 - `collections.companiesByTech` - Grouped by technology
 - `collections.allPosts` - Blog posts (reverse chronological)
