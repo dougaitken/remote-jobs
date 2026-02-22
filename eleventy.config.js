@@ -22,6 +22,7 @@ import {
   getRecentCompanies,
   getCompaniesByRegion,
   getCompaniesByTech,
+  getCompanyTags,
   showInSitemap,
   tagList
 } from './src/_config/collections.js';
@@ -55,6 +56,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection('recentCompanies', getRecentCompanies);
   eleventyConfig.addCollection('companiesByRegion', getCompaniesByRegion);
   eleventyConfig.addCollection('companiesByTech', getCompaniesByTech);
+  eleventyConfig.addCollection('companyTags', getCompanyTags);
   eleventyConfig.addCollection('showInSitemap', showInSitemap);
   eleventyConfig.addCollection('tagList', tagList);
 

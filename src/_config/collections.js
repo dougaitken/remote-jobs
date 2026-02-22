@@ -1,6 +1,7 @@
 import {
   featuredCompanySlugs,
   regionLabels,
+  remotePolicyLabels,
   techLabels
 } from '../_data/companyHelpers.js';
 import { shuffleArray } from './filters/sort-random.js';
@@ -105,4 +106,89 @@ export const tagList = collection => {
       .forEach(tag => tagsSet.add(tag));
   });
   return Array.from(tagsSet).sort();
+};
+
+/** Tag type definitions with metadata */
+const tagTypes = {
+  technology: {
+    labels: techLabels,
+    plural: 'Technologies',
+    description: 'Companies using this technology'
+  },
+  region: {
+    labels: regionLabels,
+    plural: 'Regions',
+    description: 'Companies hiring in this region'
+  },
+  'remote-policy': {
+    labels: remotePolicyLabels,
+    plural: 'Remote Policies',
+    description: 'Companies with this remote work policy'
+  }
+};
+
+/**
+ * Company tags for browse/tag pages — derived from Eleventy collections
+ * instead of manual file I/O. Replaces the old companyTags.js data file.
+ */
+export const getCompanyTags = collection => {
+  const companies = getCompanies(collection);
+
+  const tagData = {
+    technology: {},
+    region: {},
+    'remote-policy': {}
+  };
+
+  for (const company of companies) {
+    const d = company.data;
+    const companyInfo = {
+      title: d.title || company.fileSlug,
+      slug: d.slug || company.fileSlug,
+      website: d.website,
+      region: d.region,
+      remote_policy: d.remote_policy
+    };
+
+    // Technologies
+    if (Array.isArray(d.technologies)) {
+      for (const tech of d.technologies) {
+        if (!tagData.technology[tech]) tagData.technology[tech] = [];
+        tagData.technology[tech].push(companyInfo);
+      }
+    }
+
+    // Region
+    if (d.region) {
+      if (!tagData.region[d.region]) tagData.region[d.region] = [];
+      tagData.region[d.region].push(companyInfo);
+    }
+
+    // Remote policy
+    if (d.remote_policy) {
+      if (!tagData['remote-policy'][d.remote_policy]) tagData['remote-policy'][d.remote_policy] = [];
+      tagData['remote-policy'][d.remote_policy].push(companyInfo);
+    }
+  }
+
+  // Build final tag list with metadata
+  const allTags = [];
+  for (const [type, tags] of Object.entries(tagData)) {
+    const typeInfo = tagTypes[type];
+    for (const [slug, tagCompanies] of Object.entries(tags)) {
+      tagCompanies.sort((a, b) => a.title.localeCompare(b.title));
+      allTags.push({
+        slug,
+        type,
+        label: typeInfo.labels[slug] || slug,
+        description: typeInfo.description,
+        typePlural: typeInfo.plural,
+        count: tagCompanies.length,
+        companies: tagCompanies
+      });
+    }
+  }
+
+  allTags.sort((a, b) => b.count - a.count);
+  return allTags;
 };
