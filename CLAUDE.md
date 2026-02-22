@@ -166,9 +166,9 @@ Open Graph tags are also present for Facebook/LinkedIn sharing.
 
 The site uses semantic versioning in `package.json`. The version displays in the footer and links to `/changelog/`.
 
-- **Minor version bump** (e.g. 4.1.0 → 4.2.0): New company additions or blog posts
-- **Patch version bump** (e.g. 4.2.0 → 4.2.1): Edits, fixes, small changes
-- **Major version bump**: Reserved for significant redesigns or breaking changes
+- **Major version bump**: Reserved for full site eras/redesigns (v1 = flat list, v2 = linked profiles, v3 = original live site, v4 = Eleventy rebuild)
+- **Minor version bump** (e.g. 4.3.0 → 4.4.0): Visible changes — new companies, blog posts, feature additions/removals, data changes visitors can see
+- **Patch version bump** (e.g. 4.4.0 → 4.4.1): Invisible changes — bug fixes, refactoring, documentation, CI/CD, performance improvements
 
 When bumping the version:
 1. Update `version` in `package.json`
