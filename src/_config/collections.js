@@ -5,6 +5,15 @@ import {
 } from '../_data/companyHelpers.js';
 import { shuffleArray } from './filters/sort-random.js';
 
+/** Memoized glob results — avoids filtering ~850 items 6 times */
+let _companyCache = null;
+const getCompanies = collection => {
+  if (!_companyCache) {
+    _companyCache = collection.getFilteredByGlob('./src/companies/**/*.md');
+  }
+  return _companyCache;
+};
+
 /** All blog posts as a collection. */
 export const getAllPosts = collection => {
   return collection.getFilteredByGlob('./src/blog/**/*.md').reverse();
@@ -12,7 +21,7 @@ export const getAllPosts = collection => {
 
 /** All company profiles as a collection, sorted alphabetically */
 export const getAllCompanies = collection => {
-  return collection.getFilteredByGlob('./src/companies/**/*.md').sort((a, b) => {
+  return [...getCompanies(collection)].sort((a, b) => {
     const nameA = (a.data.title || '').toLowerCase();
     const nameB = (b.data.title || '').toLowerCase();
     return nameA.localeCompare(nameB);
@@ -21,7 +30,7 @@ export const getAllCompanies = collection => {
 
 /** Featured companies - randomly selected from curated list */
 export const getFeaturedCompanies = collection => {
-  const companies = collection.getFilteredByGlob('./src/companies/**/*.md');
+  const companies = getCompanies(collection);
   const matched = featuredCompanySlugs
     .map(slug => companies.find(c => c.data.slug === slug || c.fileSlug === slug))
     .filter(Boolean);
@@ -30,8 +39,7 @@ export const getFeaturedCompanies = collection => {
 
 /** Recently added companies (by addedAt date from frontmatter) */
 export const getRecentCompanies = collection => {
-  const companies = collection.getFilteredByGlob('./src/companies/**/*.md');
-  return companies
+  return [...getCompanies(collection)]
     .filter(c => c.data.addedAt)
     .sort((a, b) => b.data.addedAt - a.data.addedAt)
     .slice(0, 12);
@@ -39,7 +47,7 @@ export const getRecentCompanies = collection => {
 
 /** Companies grouped by region */
 export const getCompaniesByRegion = collection => {
-  const companies = collection.getFilteredByGlob('./src/companies/**/*.md');
+  const companies = getCompanies(collection);
   const regionGroups = {};
 
   // Initialize all regions
@@ -60,7 +68,7 @@ export const getCompaniesByRegion = collection => {
 
 /** Companies grouped by technology */
 export const getCompaniesByTech = collection => {
-  const companies = collection.getFilteredByGlob('./src/companies/**/*.md');
+  const companies = getCompanies(collection);
   const techGroups = {};
 
   // Initialize all technologies
