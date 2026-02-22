@@ -1,5 +1,64 @@
 [
   {
+    "version": "4.4.1",
+    "date": "2026-02-22",
+    "summary": "Date field documentation",
+    "changes": [
+      {
+        "type": "changed",
+        "description": "Updated CLAUDE.md, contributing guide, PR template, and validation workflow to document addedAt/updatedAt fields"
+      }
+    ]
+  },
+  {
+    "version": "4.4.0",
+    "date": "2026-02-22",
+    "summary": "Accurate company dates from git history",
+    "changes": [
+      {
+        "type": "changed",
+        "description": "Backfilled accurate addedAt/updatedAt dates for all 850+ company profiles from a decade of git history"
+      },
+      {
+        "type": "fixed",
+        "description": "Build time reduced from ~29s to ~18s by storing dates in frontmatter instead of computing from git on every build"
+      }
+    ]
+  },
+  {
+    "version": "4.3.2",
+    "date": "2026-02-22",
+    "summary": "Fairer homepage rotation",
+    "changes": [
+      {
+        "type": "fixed",
+        "description": "Replaced biased shuffle with Fisher-Yates algorithm for featured and recently added companies"
+      }
+    ]
+  },
+  {
+    "version": "4.3.1",
+    "date": "2026-02-22",
+    "summary": "Easter egg removal",
+    "changes": [
+      {
+        "type": "removed",
+        "description": "Removed easter egg confetti component"
+      }
+    ]
+  },
+  {
+    "version": "4.3.0",
+    "date": "2026-02-22",
+    "summary": "Memory leak fix",
+    "changes": [
+      {
+        "type": "fixed",
+        "description": "Fixed event listener memory leak in masonry grid web component"
+      }
+    ]
+  },
+  {
     "version": "4.2.0",
     "date": "2026-02-15",
     "summary": "Blog post and discoverability improvements",
